@@ -144,7 +144,7 @@ template "/usr/share/CloudWatch/awscreds" do
   owner 'root'
   group 'root'
   variables({
-     :access_key => node.aws.cloudwatch.key ,
-     :secret_key => node.aws.cloudwatch.secret
+     :access_key => node[:aws][:cloudwatch][:key],
+     :secret_key => node[:aws][:cloudwatch][:secret]
   })
 end
