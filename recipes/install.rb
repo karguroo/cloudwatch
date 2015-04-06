@@ -139,7 +139,7 @@ bash "Untar boto.tar.gz" do
 end
 
 template "/usr/share/CloudWatch/awscreds" do
-  source "awscreds"
+  source "awscreds.erb"
   mode '0755'
   owner 'root'
   group 'root'
