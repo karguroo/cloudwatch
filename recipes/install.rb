@@ -137,3 +137,14 @@ bash "Untar boto.tar.gz" do
   cwd "/etc/aws-scripts-mon/"
   not_if { ::File.directory?("/etc/aws-scripts-mon/boto") }
 end
+
+template "/usr/share/CloudWatch/awscreds" do
+  source "awscreds"
+  mode '0755'
+  owner 'root'
+  group 'root'
+  variables({
+     :access_key => node.aws.cloudwatch.key ,
+     :secret_key => node.aws.cloudwatch.secret
+  })
+end
