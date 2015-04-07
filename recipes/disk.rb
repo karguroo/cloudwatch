@@ -4,7 +4,7 @@ disks.each do |device_id|
 	filesystem = device_id.split(' ')[0]
 	mount_path = device_id.split(' ')[1]
 
-	aws_custom_metric_disk "Create DiskSpace Alarm for #{mount_path}" do
+	cloudwatch_disk "Create DiskSpace Alarm for #{mount_path}" do
 	  filesystem  filesystem
 	  mount_path  mount_path
 

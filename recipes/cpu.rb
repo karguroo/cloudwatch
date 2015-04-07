@@ -1,4 +1,4 @@
-aws_custom_metric_cpu "CPU Metric" do
+cloudwatch_cpu "CPU Metric" do
 	alarm_description			"CPUUtilization more than 95% in 5 minutes"
 	metric_threshold			"95"
 	metric_namespace 			"AWS/EC2"
