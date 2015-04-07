@@ -1,4 +1,5 @@
 package 'libwww-perl'
+package 'libswitch-perl'
 package 'libcrypt-ssleay-perl'
 package 'zip'
 package 'python-xmpp'
@@ -139,6 +140,17 @@ bash "Untar boto.tar.gz" do
 end
 
 template "/usr/share/CloudWatch/awscreds" do
+  source "awscreds.erb"
+  mode '0755'
+  owner 'root'
+  group 'root'
+  variables({
+     :access_key => node[:aws][:cloudwatch][:key],
+     :secret_key => node[:aws][:cloudwatch][:secret]
+  })
+end
+
+template "/etc/aws-scripts-mon/awscreds" do
   source "awscreds.erb"
   mode '0755'
   owner 'root'
